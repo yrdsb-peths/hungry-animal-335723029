@@ -20,7 +20,16 @@ public class MyWorld extends World
         Bee bee = new Bee();
         addObject(bee, 300, 200);
         
+        createApple();
+    }
+    /**
+     * Creates a new apple at a random location on the top of the screen.
+     */
+    public void createApple()
+    {
         Apple apple = new Apple();
-        addObject(apple, 300, 0);
+        int x = Greenfoot.getRandomNumber(600);
+        int y = 0;
+        addObject(apple, x, y);
     }
 }

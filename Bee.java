@@ -27,6 +27,19 @@ public class Bee extends Actor
         }
         
         //remove apple if bee is touching it
-        removeTouching(Apple.class);
+        eat();
+    }
+    
+    /**
+     * Spawns a new apple if bee eats apple.
+     */
+    public void eat()
+    {
+        if(isTouching(Apple.class))
+        {
+            removeTouching(Apple.class);
+            MyWorld world = (MyWorld) getWorld();
+            world.createApple();
+        }
     }
 }

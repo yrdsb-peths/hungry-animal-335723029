@@ -8,21 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bee extends Actor
 {
-    /**
-     * Act - do whatever the Bee wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootSound beeBuzz = new GreenfootSound("608783__delta12studio__bee.ogg");
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-1);
+            move(-3);
         }
         else
         {
             if(Greenfoot.isKeyDown("right"))
             {
-                move(1);
+                move(3);
             }
         }
         
@@ -41,6 +38,7 @@ public class Bee extends Actor
             MyWorld world = (MyWorld) getWorld();
             world.createApple();
             world.increaseScore();
+            beeBuzz.play();
         }
     }
 }

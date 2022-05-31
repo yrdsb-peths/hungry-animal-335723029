@@ -2,8 +2,13 @@
 comment0.target=Bee
 comment0.text=\n\ The\ Bee\n\ \n\ @author\ Brian\ Xiao\n\ @version\ May\ 20th\n
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Bee()
+comment1.text=\n\ Constructor\n
 comment2.params=
-comment2.target=void\ eat()
-comment2.text=\n\ Spawns\ a\ new\ apple\ if\ bee\ eats\ apple.\n
-numComments=3
+comment2.target=void\ animateBee()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ eat()
+comment4.text=\n\ Spawns\ a\ new\ apple\ if\ bee\ eats\ apple.\n
+numComments=5

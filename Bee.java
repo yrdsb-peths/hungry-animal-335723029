@@ -9,22 +9,48 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bee extends Actor
 {
     GreenfootSound beeBuzz = new GreenfootSound("608783__delta12studio__bee.ogg");
+    GreenfootImage[] idle = new GreenfootImage[3];
+    /**
+     * Constructor
+     */
+    
+    public Bee()
+    {
+        for(int i = 0; i < idle.length; i++)
+        {
+            idle[i] = new GreenfootImage("images/bee_idle/idle" + i + ".png");
+        }
+        setImage(idle[0]);
+    }
+    /**
+     * Animates the bee
+     */
+    int imageIndex = 0;
+    public void animateBee()
+    {
+        setImage(idle[imageIndex]);
+        imageIndex = (imageIndex + 1) % idle.length;
+    }
+    
+    
     public void act()
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-3);
+            move(-5);
         }
         else
         {
             if(Greenfoot.isKeyDown("right"))
             {
-                move(3);
+                move(5);
             }
         }
         
         //remove apple if bee is touching it
         eat();
+        //animates the bee
+        animateBee();
     }
     
     /**

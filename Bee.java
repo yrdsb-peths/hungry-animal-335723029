@@ -9,18 +9,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bee extends Actor
 {
     GreenfootSound beeBuzz = new GreenfootSound("608783__delta12studio__bee.ogg");
-    GreenfootImage[] idle = new GreenfootImage[3];
+    GreenfootImage[] idleRight = new GreenfootImage[3];
+    GreenfootImage[] idleLeft = new GreenfootImage[3];
+    
+    // The direction that the bee is facing
+    String facing = "right";
     /**
      * Constructor
      */
     
     public Bee()
     {
-        for(int i = 0; i < idle.length; i++)
+        for(int i = 0; i < idleRight.length; i++)
         {
-            idle[i] = new GreenfootImage("images/bee_idle/idle" + i + ".png");
+            idleRight[i] = new GreenfootImage("images/bee_idle/idle" + i + ".png");
+            idleRight[i].scale(80, 80);
         }
-        setImage(idle[0]);
+        
+        for(int i = 0; i < idleLeft.length; i++)
+        {
+            idleLeft[i] = new GreenfootImage("images/bee_idle/idle" + i + ".png");
+            idleLeft[i].mirrorHorizontally();
+            idleLeft[i].scale(80, 80);
+        }
+        
+        
+        //Intial elephant image
+        setImage(idleRight[0]);
     }
     /**
      * Animates the bee
@@ -28,8 +43,16 @@ public class Bee extends Actor
     int imageIndex = 0;
     public void animateBee()
     {
-        setImage(idle[imageIndex]);
-        imageIndex = (imageIndex + 1) % idle.length;
+        if(facing.equals("right"))
+        {
+            setImage(idleRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleRight.length;
+        } else 
+        {
+            setImage(idleLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % idleLeft.length;
+        }
+        
     }
     
     
@@ -37,13 +60,15 @@ public class Bee extends Actor
     {
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-5);
+            move(-4);
+            facing = "left";
         }
         else
         {
             if(Greenfoot.isKeyDown("right"))
             {
-                move(5);
+                move(4);
+                facing = "right";
             }
         }
         
